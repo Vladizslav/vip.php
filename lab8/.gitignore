@@ -1,1 +1,13 @@
 config.php
+# 1. Удалить config.php из индекса Git (файл останется на диске)
+git rm --cached config.php
+
+# 2. Добавить изменения в .gitignore в коммит
+git add .gitignore
+
+# 3. Создать коммит с пояснением
+git commit -m "Убрал config.php из отслеживания Git"
+
+# 4. Запушить изменения на GitHub
+git push origin main
+# или git push origin master (если ветка называется master)
