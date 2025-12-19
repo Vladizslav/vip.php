@@ -22,7 +22,7 @@
             $subject = htmlspecialchars(trim($_POST['subject']));
             $body = htmlspecialchars(trim($_POST['body']));
 
-            $to = 'korban.05@mail.ru';
+            $to = 'vladizssslav@mail.ru';
 
             $headers = "From: admin@center.ogu\r\n"; 
             $headers .= "Reply-To: admin@center.ogu\r\n";
@@ -62,4 +62,5 @@
         &copy; Супер Мега Веб-мастер, 2000 – 20xx
     </footer>
 </body>
+
 </html>
