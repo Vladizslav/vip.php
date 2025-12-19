@@ -1,0 +1,21 @@
+# Настройки сервера Apache
+Options +Indexes
+DirectoryIndex index.php
+AddDefaultCharset utf-8
+
+# Настройки PHP
+php_flag display_errors On
+php_flag display_startup_errors On
+php_value error_reporting 32767
+php_value error_log /home/f1199983/domains/f1199983.xsph.ru/php_errors.log
+
+# Запретить доступ к системным файлам
+<FilesMatch "\.(log|ini|config|sql)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Редирект на главную страницу при обращении к корню
+RedirectMatch ^/$ /index.php
+php_flag session.use_only_cookies 0
+php_flag session.use_trans_sid 1
