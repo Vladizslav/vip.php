@@ -1,3 +1,1 @@
-git rm --cached config.php
-git add .gitignore
-git commit -m "Убрал config.php из отслеживания"
+config.php
