@@ -1,4 +1,5 @@
 <?php
+ini_set('session.use_trans_sid', 0);
 session_start();
 
 include('savepage.inc.php');
@@ -22,4 +23,5 @@ include('visited.inc.php');
 ?>
 
 </body>
+
 </html>
