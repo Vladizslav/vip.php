@@ -1,30 +1,32 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
-header('Content-Type: text/html; charset=utf-8');
+// Получаем все определённые константы
+$allConstants = get_defined_constants(true);
 
-echo '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Константы PHP</title></head><body>';
-echo '<h1>Все константы PHP</h1>';
+// Выводим в виде HTML-страницы
+echo "<!DOCTYPE html>\n<html lang=\"ru\">\n<head>\n";
+echo "<meta charset=\"UTF-8\">\n<title>Все константы PHP</title>\n";
+echo "<style>body { font-family: monospace; font-size: 14px; }</style>\n</head>\n<body>\n";
 
-
-$constants = get_defined_constants(true);
-
-foreach ($constants as $group => $consts) {
-    echo "<h2>$group</h2><table border='1' cellpadding='5'><tr><th>Имя</th><th>Значение</th></tr>";
-    
-    foreach ($consts as $name => $value) {
-        // Чёткая группировка тернарных операторов
+foreach ($allConstants as $category => $constants) {
+    echo "<h2>Категория: " . htmlspecialchars($category) . "</h2>\n";
+    echo "<pre>\n";
+    foreach ($constants as $name => $value) {
+        // Преобразуем значение в строку для отображения
         if (is_bool($value)) {
-            $val = $value ? 'true' : 'false';
+            $strValue = $value ? 'true' : 'false';
         } elseif (is_null($value)) {
-            $val = 'null';
-        } elseif (is_array($value)) {
-            $val = 'array[' . count($value) . ']';
+            $strValue = 'null';
+        } elseif (is_string($value)) {
+            $strValue = '"' . addslashes($value) . '"';
         } else {
-            $val = $value;
+            $strValue = (string)$value;
         }
-        echo "<tr><td><code>$name</code></td><td>$val</td></tr>";
+        echo htmlspecialchars($name) . " = " . htmlspecialchars($strValue) . "\n";
     }
-    echo '</table><br>';
+    echo "</pre>\n";
 }
 
-echo '</body></html>';
+echo "</body>\n</html>";
+?>
