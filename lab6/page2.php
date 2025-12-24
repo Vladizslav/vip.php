@@ -1,10 +1,14 @@
 <?php
- declare(strict_types=1);
+declare(strict_types=1);
 
- session_start();
+// Настройка сессии - отключаем передачу ID через URL, используем только cookies
+ini_set('session.use_trans_sid', 0);
+ini_set('session.use_only_cookies', 1);
 
- // Подключаем код для сохранения информации о странице в сессии
- include 'savepage.inc.php';
+session_start();
+
+// Подключаем код для сохранения информации о странице в сессии
+include 'savepage.inc.php';
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -17,10 +21,10 @@
   <h1>Страница 2</h1>
 
   <?php
-   include 'menu.inc.php';
+   include('menu.inc.php');
 
    // Подключаем код для вывода информации обо всех посещённых страницах
-   include 'visited.inc.php';
+   include('visited.inc.php');
   ?>
 
  </body>
