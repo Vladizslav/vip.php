@@ -1,25 +1,27 @@
 <?php
+ declare(strict_types=1);
 
-ini_set('session.use_trans_sid', 0);
-session_start();
+ session_start();
 
-include('savepage.inc.php');
+ // Подключаем код для сохранения информации о странице в сессии
+ include 'savepage.inc.php';
 ?>
-<!doctype html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Страница 3</title>
-</head>
-<body>
+<!DOCTYPE html>
+<html lang="ru">
+ <head>
+  <meta charset="UTF-8">
+  <title>Страница 3</title>
+ </head>
+ <body>
 
-<h1>Страница 3</h1>
+  <h1>Страница 3</h1>
 
-<?php
-include('menu.inc.php');
-include('visited.inc.php');
-?>
+  <?php
+   include 'menu.inc.php';
 
-</body>
+   // Подключаем код для вывода информации обо всех посещённых страницах
+   include 'visited.inc.php';
+  ?>
 
+ </body>
 </html>
